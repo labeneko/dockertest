@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: ./docker/app
+    tty: true
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+  db:
+    build: ./docker/db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: CoderChat
